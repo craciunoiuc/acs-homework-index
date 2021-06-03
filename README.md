@@ -28,7 +28,8 @@ Year 4 (2020-2021, C1):
  * Parallel Architectures (APP), Nicolae Tapus; Link: https://github.com/craciunoiuc/parallel-architectures
  * Multiprocessor Structures (SM), Francisc Iacob; Link: https://github.com/craciunoiuc/multiprocessor-structures
  * Computer Graphics 2 (SPG), Florica Moldoveanu; Link: https://github.com/craciunoiuc/computer-graphics-2
- * Currently in progress
+ * VLSI design (PVLSI), Decebal Popescu; Link: https://github.com/craciunoiuc/vlsi
+ * Operating Systems 2 (SO2), Octavian Purdila; Link: https://github.com/craciunoiuc/SO2
  
 ----------------------------------------------------------------------------------------------------------------
 ### Keywords
