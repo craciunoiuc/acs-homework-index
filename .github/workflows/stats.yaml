@@ -14,4 +14,4 @@ jobs:
         uses: jgehrcke/github-repo-stats@RELEASE
         with:
           ghtoken: ${{ secrets.REPO_STATS }}
-          databranch: main
+          databranch: repo_stats
