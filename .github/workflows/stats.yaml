@@ -2,7 +2,7 @@ on:
   schedule:
     # Run this once per day, towards the end of the day for keeping the most
     # recent data point most meaningful (hours are interpreted in UTC).
-    - cron: "0 23 * * *"
+    - cron: "0 22 * * *"
   workflow_dispatch:
 
 jobs:
@@ -13,5 +13,32 @@ jobs:
       - name: run-ghrs
         uses: jgehrcke/github-repo-stats@RELEASE
         with:
+          ghtoken: ${{ secrets.REPO_STATS }}
+          databranch: repo_stats
+  run-ghrs-with-matrix:
+    name: repo-stats-for-subrepos
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # The repositories to generate reports for.
+        statsRepo: ['craciunoiuc/numericalmethods', 'craciunoiuc/computerprogramming', 'craciunoiuc/datastructures',
+                    'craciunoiuc/oop-homework', 'craciunoiuc/assembly', 'craciunoiuc/network-protocols',
+                    'craciunoiuc/programming-paradigms', 'craciunoiuc/algorithmanalysis', 'craciunoiuc/algorithm-design',
+                    'craciunoiuc/Halite-III', 'craciunoiuc/parallel-algorithms', 'craciunoiuc/computer-graphics',
+                    'craciunoiuc/operating-systems', 'craciunoiuc/computer-architecture', 'craciunoiuc/parallel-architectures',
+                    'craciunoiuc/multiprocessor-structures', 'craciunoiuc/computer-graphics-2', 'craciunoiuc/vlsi',
+                    'craciunoiuc/SO2', 'craciunoiuc/SIS', 'craciunoiuc/CNS',
+                    'craciunoiuc/IQC-lab-presentation', 'SMD-UPB/lab_8-10_ionut-craciunoiuc', 'SMD-UPB/lab_8-10_project_ionut-craciunoiuc',
+                    'craciunoiuc/AC', 'gabrielmocanu/cloud-computing-project' ]
+      # Do not cancel&fail all remaining jobs upon first job failure.
+      fail-fast: false
+      # Help avoid commit conflicts. Note(JP): this should not be
+      # necessary anymore, feedback appreciated
+      max-parallel: 1
+    steps:
+      - name: run-ghrs
+        uses: jgehrcke/github-repo-stats@RELEASE
+        with:
+          repository: ${{ matrix.statsRepo }}
           ghtoken: ${{ secrets.REPO_STATS }}
           databranch: repo_stats
