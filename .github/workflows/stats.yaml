@@ -17,6 +17,7 @@ jobs:
           databranch: repo_stats
   run-ghrs-with-matrix:
     name: repo-stats-for-subrepos
+    needs: j1
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -44,14 +45,14 @@ jobs:
           databranch: repo_stats
   squash-all-new-commits:
     name: squash-new-commits
+    if: ${{ always() }}
+    needs: [j1, run-ghrs-with-matrix]
     runs-on: ubuntu-latest
     steps:
       - name: Clone & Move to stats branch
-        run: git clone https://github.com/craciunoiuc/acs-homework-index.git && cd acs-homework-index && git checkout repo_stats
-
-      - name: Reset the last 24h
-        run: git reset --soft $(git log --date=format:'%Y-%m-%d %H:%M:%S' | grep -B 2 $(date --date="yesterday" '+%F') | head -1 | cut -d' ' -f2-)
-
-      - name: Create new commit and push
-        run: git commit -s -m "Add statistics for $(date '+%F')" && git push
+        run: git clone https://github.com/craciunoiuc/acs-homework-index.git && \
+          cd acs-homework-index && \
+          git checkout repo_stats && \
+          git reset --soft $(git log --date=format:'%Y-%m-%d %H:%M:%S' | grep -B 2 $(date --date="yesterday" '+%F') | head -1 | cut -d' ' -f2-) && git commit -s -m "Add statistics for $(date '+%F')" && \
+          git push
 
