@@ -43,12 +43,22 @@ jobs:
           repository: ${{ matrix.statsRepo }}
           ghtoken: ${{ secrets.REPO_STATS }}
           databranch: repo_stats
+
   squash-all-new-commits:
     name: squash-new-commits
     if: ${{ always() }}
     needs: [j1, run-ghrs-with-matrix]
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
       - name: Clone & Move to stats branch
-        run: git clone https://github.com/craciunoiuc/acs-homework-index.git . && git checkout repo_stats && git reset --soft $(git log --date=format:'%Y-%m-%d %H:%M:%S' | grep -B 2 $(date --date="yesterday" '+%F') | head -1 | cut -d' ' -f2-) && git config --global user.email "action@github.com" && git config --global user.name "GitHub Action" && git commit -s -m "Add statistics for $(date '+%F')" && git push "https://${GITHUB_TOKEN}@github.com/craciunoiuc/acs-homework-index.git"
+        run: |
+          git checkout repo_stats 
+          git reset --soft $(git log --date=format:'%Y-%m-%d %H:%M:%S' | grep -B 2 $(date --date="yesterday" '+%F') | head -1 | cut -d' ' -f2-)
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+          git commit -s -m "Add statistics for $(date '+%F')"
+          git push
 
