@@ -1,0 +1,11 @@
+url_path,views_total,views_unique
+/craciunoiuc/parallel-architectures,2,2
+/craciunoiuc/parallel-architectures/blob/master/OpenMP_version/filters/gaussian-blur_filter_openMP.cpp,2,1
+/craciunoiuc/parallel-architectures/blob/master/performance_analysis/pthread/time_5000x10000_5canny_2.txt,1,1
+/craciunoiuc/parallel-architectures/blob/master/performance_analysis/pthread/time_5000x10000_5canny_8.txt,1,1
+/craciunoiuc/parallel-architectures/blob/master/performance_analysis/Scalability.png,1,1
+/craciunoiuc/parallel-architectures/tree/master/OpenMP_version,1,1
+/craciunoiuc/parallel-architectures/tree/master/OpenMP_version/filters,1,1
+/craciunoiuc/parallel-architectures/tree/master/performance_analysis,1,1
+/craciunoiuc/parallel-architectures/tree/master/performance_analysis/pthread,1,1
+/craciunoiuc/parallel-architectures/tree/master/Pthread_version,1,1
