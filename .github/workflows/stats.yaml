@@ -22,15 +22,16 @@ jobs:
     strategy:
       matrix:
         # The repositories to generate reports for.
-        statsRepo: ['craciunoiuc/numericalmethods', 'craciunoiuc/computerprogramming', 'craciunoiuc/datastructures',
-                    'craciunoiuc/oop-homework', 'craciunoiuc/assembly', 'craciunoiuc/network-protocols',
-                    'craciunoiuc/programming-paradigms', 'craciunoiuc/algorithmanalysis', 'craciunoiuc/algorithm-design',
-                    'craciunoiuc/Halite-III', 'craciunoiuc/parallel-algorithms', 'craciunoiuc/computer-graphics',
-                    'craciunoiuc/operating-systems', 'craciunoiuc/computer-architecture', 'craciunoiuc/parallel-architectures',
-                    'craciunoiuc/multiprocessor-structures', 'craciunoiuc/computer-graphics-2', 'craciunoiuc/vlsi',
-                    'craciunoiuc/SO2', 'craciunoiuc/SIS', 'craciunoiuc/CNS',
-                    'craciunoiuc/IQC-lab-presentation', 'SMD-UPB/lab_8-10_ionut-craciunoiuc', 'SMD-UPB/lab_8-10_project_ionut-craciunoiuc',
-                    'craciunoiuc/AC', 'gabrielmocanu/cloud-computing-project' ]
+          statsRepo: []
+#         statsRepo: ['craciunoiuc/numericalmethods', 'craciunoiuc/computerprogramming', 'craciunoiuc/datastructures',
+#                     'craciunoiuc/oop-homework', 'craciunoiuc/assembly', 'craciunoiuc/network-protocols',
+#                     'craciunoiuc/programming-paradigms', 'craciunoiuc/algorithmanalysis', 'craciunoiuc/algorithm-design',
+#                     'craciunoiuc/Halite-III', 'craciunoiuc/parallel-algorithms', 'craciunoiuc/computer-graphics',
+#                     'craciunoiuc/operating-systems', 'craciunoiuc/computer-architecture', 'craciunoiuc/parallel-architectures',
+#                     'craciunoiuc/multiprocessor-structures', 'craciunoiuc/computer-graphics-2', 'craciunoiuc/vlsi',
+#                     'craciunoiuc/SO2', 'craciunoiuc/SIS', 'craciunoiuc/CNS',
+#                     'craciunoiuc/IQC-lab-presentation', 'SMD-UPB/lab_8-10_ionut-craciunoiuc', 'SMD-UPB/lab_8-10_project_ionut-craciunoiuc',
+#                     'craciunoiuc/AC', 'gabrielmocanu/cloud-computing-project' ]
       # Do not cancel&fail all remaining jobs upon first job failure.
       fail-fast: false
       # Help avoid commit conflicts. Note(JP): this should not be
