@@ -2,7 +2,7 @@ on:
   schedule:
     # Run this once per day, towards the end of the day for keeping the most
     # recent data point most meaningful (hours are interpreted in UTC).
-    - cron: "0 23 * * *"
+    - cron: "0 22 * * *"
   workflow_dispatch:
 
 jobs:
@@ -15,3 +15,51 @@ jobs:
         with:
           ghtoken: ${{ secrets.REPO_STATS }}
           databranch: repo_stats
+  run-ghrs-with-matrix:
+    name: repo-stats-for-subrepos
+    needs: j1
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # The repositories to generate reports for.
+          statsRepo: [ 'craciunoiuc/acs-homework-index' ]
+#         statsRepo: ['craciunoiuc/numericalmethods', 'craciunoiuc/computerprogramming', 'craciunoiuc/datastructures',
+#                     'craciunoiuc/oop-homework', 'craciunoiuc/assembly', 'craciunoiuc/network-protocols',
+#                     'craciunoiuc/programming-paradigms', 'craciunoiuc/algorithmanalysis', 'craciunoiuc/algorithm-design',
+#                     'craciunoiuc/Halite-III', 'craciunoiuc/parallel-algorithms', 'craciunoiuc/computer-graphics',
+#                     'craciunoiuc/operating-systems', 'craciunoiuc/computer-architecture', 'craciunoiuc/parallel-architectures',
+#                     'craciunoiuc/multiprocessor-structures', 'craciunoiuc/computer-graphics-2', 'craciunoiuc/vlsi',
+#                     'craciunoiuc/SO2', 'craciunoiuc/SIS', 'craciunoiuc/CNS',
+#                     'craciunoiuc/IQC-lab-presentation', 'SMD-UPB/lab_8-10_ionut-craciunoiuc', 'SMD-UPB/lab_8-10_project_ionut-craciunoiuc',
+#                     'craciunoiuc/AC', 'gabrielmocanu/cloud-computing-project' ]
+      # Do not cancel&fail all remaining jobs upon first job failure.
+      fail-fast: false
+      # Help avoid commit conflicts. Note(JP): this should not be
+      # necessary anymore, feedback appreciated
+      max-parallel: 1
+    steps:
+      - name: run-ghrs
+        uses: jgehrcke/github-repo-stats@RELEASE
+        with:
+          repository: ${{ matrix.statsRepo }}
+          ghtoken: ${{ secrets.REPO_STATS }}
+          databranch: repo_stats
+
+#  squash-all-new-commits:
+#    name: squash-new-commits
+#    if: ${{ always() }}
+#    needs: [j1, run-ghrs-with-matrix]
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout repo
+#        uses: actions/checkout@v3
+#        with:
+#          ref: 'repo_stats'
+#
+#      - name: Clone & Move to stats branch
+#        run: |
+#          git reset --soft $(git log --date=format:'%Y-%m-%d %H:%M:%S' | grep -B 2 $(date --date="yesterday" '+%F') | head -1 | cut -d' ' -f2-)
+#          git config --global user.email "action@github.com"
+#          git config --global user.name "GitHub Action"
+#          git commit -s -m "Add statistics for $(date '+%F')"
+#          git push
