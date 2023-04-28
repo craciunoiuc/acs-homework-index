@@ -1,5 +1,5 @@
 % Statistics for craciunoiuc/acs-homework-index
-% Generated for [craciunoiuc/acs-homework-index](https://github.com/craciunoiuc/acs-homework-index) with [jgehrcke/github-repo-stats](https://github.com/jgehrcke/github-repo-stats) at 2023-04-28 22:16 UTC.
+% Generated for [craciunoiuc/acs-homework-index](https://github.com/craciunoiuc/acs-homework-index) with [jgehrcke/github-repo-stats](https://github.com/jgehrcke/github-repo-stats) at 2023-04-28 22:17 UTC.
 
 
 ## Views
@@ -84,7 +84,7 @@ Top 15 referrers: 01: `Google`, 02: `github.com`, 03: `linkedin.com`, 04: `prese
 
 <div id="chart_paths_top_n_alltime" class="full-width-chart"></div>
 
-Top 15 paths: 01: `/`, 02: `/blob/main/README.md`, 03: `/tree/main/.github/workflows`, 04: `/tree/repo_stats`, 05: `/blob/main/.github/workflows/stats.yaml`, 06: `/commits`, 07: `/tree/repo_stats/craciunoiuc`, 08: `/branches`, 09: `/search`, 10: `/tree/repo_stats/craciunoiuc/AC`, 11: `/community`, 12: `/pulls`, 13: `/graphs/code-frequency`, 14: `/commit/5dceb077aa6d4bbb7e493a35184515031732a10a`, 15: `/commits/main/.github/workflows/stats.yaml`
+Top 15 paths: 01: `/`, 02: `/blob/main/README.md`, 03: `/tree/main/.github/workflows`, 04: `/tree/repo_stats`, 05: `/blob/main/.github/workflows/stats.yaml`, 06: `/commits`, 07: `/tree/repo_stats/craciunoiuc`, 08: `/search`, 09: `/branches`, 10: `/commit/396ca4c9275ab9ce71886dbac1e84a5428c6dac7`, 11: `/network/dependents`, 12: `/network/dependencies`, 13: `/blob/5dceb077aa6d4bbb7e493a35184515031732a10a/README.md`, 14: `/tree/repo_stats/SMD-UPB/lab_8-10_project_ionut-craciunoiuc/ghrs-data`, 15: `/tree/main/.github`
 
 
 <script type="text/javascript">
