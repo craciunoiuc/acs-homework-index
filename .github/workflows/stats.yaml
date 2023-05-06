@@ -45,21 +45,22 @@ jobs:
           ghtoken: ${{ secrets.REPO_STATS }}
           databranch: repo_stats
 
-#  squash-all-new-commits:
-#    name: squash-new-commits
-#    if: ${{ always() }}
-#    needs: [j1, run-ghrs-with-matrix]
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: Checkout repo
-#        uses: actions/checkout@v3
-#        with:
-#          ref: 'repo_stats'
-#
-#      - name: Clone & Move to stats branch
-#        run: |
-#          git reset --soft $(git log --date=format:'%Y-%m-%d %H:%M:%S' | grep -B 2 $(date --date="yesterday" '+%F') | head -1 | cut -d' ' -f2-)
-#          git config --global user.email "action@github.com"
-#          git config --global user.name "GitHub Action"
-#          git commit -s -m "Add statistics for $(date '+%F')"
-#          git push
+  squash-all-new-commits:
+    name: squash-new-commits
+    if: ${{ always() }}
+    needs: [j1, run-ghrs-with-matrix]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          ref: 'repo_stats'
+
+      - name: Clone & Move to stats branch
+        run: |
+          # git reset --soft $(git log --date=format:'%Y-%m-%d %H:%M:%S' | grep -B 2 $(date --date="yesterday" '+%F') | head -1 | cut -d' ' -f2-)
+          git reset --soft HEAD~6
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+          git commit -s -m "Add statistics for $(date '+%F')"
+          git push
