@@ -1,8 +1,10 @@
 on:
-  schedule:
+  # schedule:
     # Run this once per day, towards the end of the day for keeping the most
     # recent data point most meaningful (hours are interpreted in UTC).
-    - cron: "0 22 * * *"
+    # Commented out because it is generating too many commits.
+    # Consider the experiment concluded. 
+    # - cron: "0 22 * * *"
   workflow_dispatch:
 
 jobs:
